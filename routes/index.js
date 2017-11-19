@@ -8,5 +8,5 @@ router.use('/user', userRouter);
 
 
 router.get('/', function(request, response, next){
-	response.send('hi');
+	response.render('index');
 })

@@ -3,13 +3,15 @@ var router = new express.Router();
 module.exports = router;
 
 router.get('/', function(request, response, next) {
-	response.send('this is /wiki/!')
+	response.redirect('/')
 })
 
 router.post('/', function(request, response, next){
-	response.send('this is a post!!!!!')
+	response.json(request.body)
 })
 
+
 router.get('/add', function(request, response, next){
-	response.send("welcome to /add at wiki!!!")
+	response.render("addpage")
 })
+
