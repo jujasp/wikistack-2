@@ -11,6 +11,10 @@ var env = nunjucks.configure('views', {noCache: true});
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 var wikiRouter = require('./routes/wiki');
 var usersRouter = require('./routes/user');
 
@@ -18,10 +22,6 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', routes);
 app.use('/wiki', wikiRouter);
 app.use('/users', usersRouter);
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
 
 models.db.sync({force: true})
